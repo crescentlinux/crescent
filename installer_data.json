@@ -1,7 +1,7 @@
 {
     "os_list": [
 	{
-            "name": "crescent Desktop 1",
+            "name": "Crescent Desktop 1",
             "default_os_name": "crescent",
             "boot_object": "m1n1.bin",
             "next_object": "m1n1/boot.bin",
