@@ -11,7 +11,7 @@ export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 export REPO_BASE="http://www.cres.rf.gd"
 export VERSION_FLAG=https://cdn.asahilinux.org/installer/latest
 export INSTALLER_BASE=https://cdn.asahilinux.org/installer
-export INSTALLER_DATA="$REPO_BASE"/crescm1/gallery/installer_data.json
+export INSTALLER_DATA="$REPO_BASE"/gallery/installer_data.json
 
 #TMP="$(mktemp -d)"
 TMP=/tmp/asahi-install
