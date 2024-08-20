@@ -12,8 +12,8 @@ echo
 echo "Press enter twice if you really want to continue."
 echo "Press Control-C to exit."
 
-read
-read
+read ans
+read ans
 
 diskutil list | grep Apple_APFS | grep '\b2\.5 GB' | sed 's/.* //g' | while read i; do
     diskutil apfs deleteContainer "$i"
