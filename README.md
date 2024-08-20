@@ -3,3 +3,6 @@
 ⠀⠀⠀⠀<img src="https://github.com/user-attachments/assets/73c444fb-8e0e-4b01-aeb2-227052879791" width="128">
 
 # 🌙 crescent linux
+simple, modern and pleasing. Crescent aims to bring an aesthetic Linux experience to your Mac device with Apple M1/M2 series chip, while keeping THAT important balance between looks and performance.
+
+crescent exists thanks to [Asahi Linux](https://asahilinux.org): an amazing project developed by the Asahi team that brings the world of Linux to Apple M1/M2 devices running macOS.
