@@ -15,6 +15,7 @@ echo "Press Control-C to exit."
 read
 read
 
+# If you used 'asahi' instead of crescent as the name, replace 'crescent' with 'asahi' in 'crescent|linux|EFI'
 diskutil list | grep Apple_APFS | grep '\b2\.5 GB' | sed 's/.* //g' | while read i; do
     diskutil apfs deleteContainer "$i"
 done
