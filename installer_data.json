@@ -2,7 +2,7 @@
     "os_list": [
 	{
             "name": "Crescent Desktop (dev)",
-            "default_os_name": "crescent",
+            "default_os_name": "Crescent",
             "boot_object": "m1n1.bin",
             "next_object": "m1n1/boot.bin",
             "package": "crescent-desktop.zip",
