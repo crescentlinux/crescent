@@ -1,8 +1,8 @@
 {
     "os_list": [
 	{
-            "name": "Crescent Desktop (dev)",
-            "default_os_name": "Crescent",
+            "name": "Crescent, to the Moon! (21G0S8)",
+            "default_os_name": "crescent",
             "boot_object": "m1n1.bin",
             "next_object": "m1n1/boot.bin",
             "package": "crescent-desktop.zip",
@@ -20,7 +20,15 @@
                 {
                     "name": "Root",
                     "type": "Linux",
-                    "size": "15GB",
+                    "size": "12GB",
+                    "expand": true,
+                    "image": "media"
+                },
+                {
+                    "name": "vstHold",
+                    "type": "EFI",
+                    "size": "308MB",
+                    "format": "fat",
                     "expand": true,
                     "image": "media"
                 }
