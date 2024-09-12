@@ -1,6 +1,9 @@
 #!/bin/sh
 set -e
 
+# sorry for the 9 anime pictures heheheha
+# mb gang :sob:
+
 echo "THIS SCRIPT IS DANGEROUS!"
 echo "DO NOT BLINDLY RUN IT IF SOMEONE JUST SENT YOU HERE."
 echo "IT WILL INDISCRIMINATELY WIPE A BUNCH OF PARTITIONS"
@@ -18,7 +21,8 @@ read ans
 diskutil list | grep Apple_APFS | grep '\b2\.5 GB' | sed 's/.* //g' | while read i; do
     diskutil apfs deleteContainer "$i"
 done
-# If you used 'asahi' instead of crescent for the name, replace 'crescent' with 'asahi' in 'crescent|linux|EFI'
+# If you used anything instead of crescent for the name and fail to get results, replace 'crescent' with
+# whatever you named crescent in 'crescent|linux|EFI'
 diskutil list /dev/disk0 | grep -Ei 'crescent|linux|EFI' | sed 's/.* //g' | while read i; do
     diskutil eraseVolume free free "$i"
 done
