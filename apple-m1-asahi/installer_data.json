@@ -5,8 +5,8 @@
             "default_os_name": "crescent",
             "boot_object": "m1n1.bin",
             "next_object": "m1n1/boot.bin",
-            "package": "crescent-desktop.zip",
-            "supported_fw": ["12.3", "12.4", "13.5"],
+            "package": "https://cres.rf.gd/gallery/6.10.3-crescent-db-1.14.zip",
+            "supported_fw": ["12.3", "12.4", "13.5", "14.1"],
             "partitions": [
                 {
                     "name": "EFI",
@@ -20,17 +20,16 @@
                 {
                     "name": "Root",
                     "type": "Linux",
-                    "size": "12GB",
+                    "size": "4GB",
                     "expand": true,
-                    "image": "media"
+                    "image": "root.img"
                 },
                 {
-                    "name": "vstHold",
+                    "name": "vaste",
                     "type": "EFI",
                     "size": "308MB",
                     "format": "fat",
-                    "expand": true,
-                    "image": "media"
+                    "source": "esp"
                 }
             ]
         }
