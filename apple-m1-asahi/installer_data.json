@@ -1,3 +1,4 @@
+
 {
     "os_list": [
 	{
@@ -23,13 +24,6 @@
                     "size": "4GB",
                     "expand": true,
                     "image": "root.img"
-                },
-                {
-                    "name": "vaste",
-                    "type": "EFI",
-                    "size": "308MB",
-                    "format": "fat",
-                    "source": "esp"
                 }
             ]
         }
