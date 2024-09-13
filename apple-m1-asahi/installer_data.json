@@ -6,7 +6,7 @@
             "default_os_name": "crescent",
             "boot_object": "m1n1.bin",
             "next_object": "m1n1/boot.bin",
-            "package": "https://github.com/crescentlinux/crescent/raw/main/6.10-crescent-asahi-db-1.15.zip",
+            "package": "https://github.com/crescentlinux/crescent/raw/main/crescent-void-240912.zip",
             "supported_fw": ["12.3", "12.4", "13.5", "14.1"],
             "partitions": [
                 {
@@ -24,13 +24,6 @@
                     "size": "4GB",
                     "expand": true,
                     "image": "root.img"
-                },
-                {
-                    "name": "vaste",
-                    "type": "EFI",
-                    "size": "308MB",
-                    "format": "fat",
-                    "source": "esp"
                 }
             ]
         }
