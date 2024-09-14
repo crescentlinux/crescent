@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
-set -eu
 set -o pipefail
 
 if [ ! -e /System ]; then
@@ -46,7 +45,9 @@ export vaste=/vst
 export PATH=/Users/vastra/.vaste/bin:/vst/var/vaste/profiles/default/bin:$PATH
 
 /usr/sbin/diskutil info disk0s2 | grep -i "Disk Size" | grep -Eo ":[^']*GB|TB" | sed 's/\.*: *//' | sed 's/\.*GB*//' | while read o; do
-  vsize=$(($o-2))
+  vsize=$(echo "scale=1;$o-2" | bc)
+  done
+  
   /usr/sbin/diskutil apfs resizeContainer disk0s2 $vsize
   /usr/sbin/diskutil apfs addPartition disk0 ms-dos 'vaste' 308m
 
