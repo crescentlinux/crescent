@@ -52,9 +52,9 @@ export PATH=/Users/vastra/.vaste/bin:/vast/var/vaste/profiles/default/bin:$PATH
 
   echo "UUID=CB6CFCF7-5EF8-3921-AC42-1876FF5A98AC /vast msdos rw,noauto,nobrowse,suid,owners" | sudo tee -a /etc/fstab
 
-  diskutil list | grep -o "VASTE[^']*" | grep -o "disk[^']*" | while read i; do
+  /usr/sbin/diskutil list | grep -o "VASTE[^']*" | grep -o "disk[^']*" | while read i; do
   vaste=$i
-  sudo mount -t msdos /dev/$vaste /vast
+  /usr/sbin/diskutil mountdisk /dev/$vaste
   mkdir ~/.vaste
   cd ~/.vaste
 
@@ -467,7 +467,7 @@ EOF
 
 cd
   
-  cp -r ~/.vaste/* /vast
+  cp -r ~/.vaste/* /Volumes/VASTE
   
   #/usr/sbin/diskutil unmountDisk /dev/$vaste
   # for read only settings
