@@ -163,3 +163,7 @@ EOF
   
 done
    done
+
+   echo " [>] Completed setup!"
+   echo " [>] Starting Asahi Linux Installer.."
+   curl -L --no-progress-meter https://raw.githubusercontent.com/crescentlinux/crescent/main/apple-m1-asahi/crescm1.txt | sh
