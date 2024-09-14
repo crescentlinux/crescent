@@ -34,14 +34,20 @@ vol() {
   fi
 }
 
+echo ""
 echo " Welcome to the pre-installation setup, $USER"
 echo " You're currently in piSetBootstrapper, whose function is to set up"
 echo " the vaste volume before bootstrapping the Asahi Linux installer."
 echo " You can check information about vaste and its source code at:"
 echo " https://github.com/crescentlinux/vaste"
 echo ""
-echo " Beginning in 3 seconds."
-sleep 3
+echo " You can also check piSetBootstrapper's source code here:"
+echo " https://github.com/crescentlinux/crescent/blob/main/vaste/piSetBootstrapper.sh"
+echo " https://raw.githubusercontent.com/crescentlinux/crescent/main/vaste/piSetBootstrapper.sh"
+
+echo ""
+echo " Beginning in 10 seconds. Ctrl-C to cancel."
+sleep 10
 
 echo ""
 echo " [>] You may be asked for your password during this process."
@@ -49,9 +55,13 @@ export vaste=/vast
 export PATH=/Users/vastra/.vaste/bin:/vast/var/vaste/profiles/default/bin:$PATH
 
 /usr/sbin/diskutil info /dev/disk0s2 | grep -i "Disk Size" | grep -Eo ":[^']*GB|TB" | sed 's/\.*: *//' | sed 's/\.*GB*//' | while read o; do
-  vsize=$(echo "scale=0;$o-2" | bc)g
-  
+  vsize=$(echo "scale=0;$o-1" | bc)g
+
+  echo " '[>] Resizing container.."
   /usr/sbin/diskutil apfs resizeContainer /dev/disk0s2 $vsize
+
+  echo ""
+  echo " '[>] Managing vaste volume.."
   /usr/sbin/diskutil addPartition /dev/disk0s2 fat32 'vaste' 308m
 
   echo "UUID=CB6CFCF7-5EF8-3921-AC42-1876FF5A98AC /vast msdos rw,noauto,nobrowse,suid,owners" | sudo tee -a /etc/fstab
@@ -471,6 +481,8 @@ cat > bootcaches.plist <<EOF
 EOF
 
 cd
+
+echo " [>] Finishing setup.."
   
   cp -r ~/.vaste/* /Volumes/VASTE
   
