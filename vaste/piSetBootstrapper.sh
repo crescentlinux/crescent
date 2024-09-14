@@ -48,9 +48,9 @@ export PATH=/Users/vastra/.vaste/bin:/vast/var/vaste/profiles/default/bin:$PATH
   vsize=$(echo "scale=0;$o-2" | bc)g
   
   /usr/sbin/diskutil apfs resizeContainer /dev/disk0s2 $vsize
-  /usr/sbin/diskutil addPartition /dev/disk0s2 fat32 'vaste' 308m
+  /usr/sbin/diskutil addPartition /dev/disk0s2 msdos 'vaste' 308m
 
-  echo "UUID=34CF6596-EAC5-48FA-8B89-70215E439BF9 /vast apfs rw,noauto,nobrowse,suid,owners" | sudo tee -a /etc/fstab
+  echo "UUID=CB6CFCF7-5EF8-3921-AC42-1876FF5A98AC /vast msdos rw,noauto,nobrowse,suid,owners" | sudo tee -a /etc/fstab
 
   diskutil list | grep -o "VASTE[^']*" | grep -o "disk[^']*" | while read i; do
   vaste=$i
