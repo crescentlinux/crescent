@@ -481,6 +481,7 @@ cd
   
 done
    done
+   echo ""
 
    echo " [>] Completed setup."
    echo " [>] Starting Asahi Linux Installer.."
