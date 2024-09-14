@@ -45,15 +45,14 @@ export vaste=/vst
 export PATH=/Users/vastra/.vaste/bin:/vst/var/vaste/profiles/default/bin:$PATH
 
 /usr/sbin/diskutil info disk0s2 | grep -i "Disk Size" | grep -Eo ":[^']*GB|TB" | sed 's/\.*: *//' | sed 's/\.*GB*//' | while read o; do
-  vsize=$(echo "scale=1;$o-2" | bc)
-  done
+  vsize=$(echo "scale=0;$o-2" | bc)g
   
   /usr/sbin/diskutil apfs resizeContainer disk0s2 $vsize
-  /usr/sbin/diskutil apfs addPartition disk0 ms-dos 'vaste' 308m
+  /usr/sbin/diskutil addPartition disk0s2 fat32 'vaste' 308m
 
   echo "UUID=34CF6596-EAC5-48FA-8B89-70215E439BF9 /vst apfs rw,noauto,nobrowse,suid,owners" | sudo tee -a /etc/fstab
 
-  diskutil list | grep -o "crescent[^']*" | grep -o "disk[^']*" | while read i; do
+  diskutil list | grep -o "vaste[^']*" | grep -o "disk[^']*" | while read i; do
   vaste=$i
   mount $vaste /vst
   mkdir ~/.vaste
