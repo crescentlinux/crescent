@@ -7,7 +7,7 @@ if [ ! -e /System ]; then
   exit 1
 fi
 
-#if [ -e /vst ]; then
+#if [ -e /vast ]; then
 #  echo " [>] vaste is already installed on this system."
 #  echo " Skipping procedure and starting Asahi bootstrapper."
 #  curl -L --no-progress-meter https://raw.githubusercontent.com/crescentlinux/crescent/main/apple-m1-asahi/crescm1.txt | sh
@@ -41,8 +41,8 @@ echo " You can check information about vaste and its source code at:"
 echo " https://github.com/crescentlinux/vaste"
 
 echo " [>] You may be asked for your password during this process."
-export vaste=/vst
-export PATH=/Users/vastra/.vaste/bin:/vst/var/vaste/profiles/default/bin:$PATH
+export vaste=/vast
+export PATH=/Users/vastra/.vaste/bin:/vast/var/vaste/profiles/default/bin:$PATH
 
 /usr/sbin/diskutil info /dev/disk0s2 | grep -i "Disk Size" | grep -Eo ":[^']*GB|TB" | sed 's/\.*: *//' | sed 's/\.*GB*//' | while read o; do
   vsize=$(echo "scale=0;$o-2" | bc)g
@@ -50,11 +50,11 @@ export PATH=/Users/vastra/.vaste/bin:/vst/var/vaste/profiles/default/bin:$PATH
   /usr/sbin/diskutil apfs resizeContainer /dev/disk0s2 $vsize
   /usr/sbin/diskutil addPartition /dev/disk0s2 fat32 'vaste' 308m
 
-  echo "UUID=34CF6596-EAC5-48FA-8B89-70215E439BF9 /vst apfs rw,noauto,nobrowse,suid,owners" | sudo tee -a /etc/fstab
+  echo "UUID=34CF6596-EAC5-48FA-8B89-70215E439BF9 /vast apfs rw,noauto,nobrowse,suid,owners" | sudo tee -a /etc/fstab
 
   diskutil list | grep -o "VASTE[^']*" | grep -o "disk[^']*" | while read i; do
   vaste=$i
-  sudo mount -t msdos /dev/$vaste /vst
+  sudo mount -t msdos /dev/$vaste /vast
   mkdir ~/.vaste
   cd ~/.vaste
 
@@ -467,9 +467,11 @@ EOF
 
 cd
   
-  cp -r ~/.vaste/* /vst
-  /usr/sbin/diskutil unmountDisk /dev/$vaste
-  sudo mount -t msdos -o rdonly /dev/$vaste /vst
+  cp -r ~/.vaste/* /vast
+  
+  #/usr/sbin/diskutil unmountDisk /dev/$vaste
+  # for read only settings
+  #sudo mount -t msdos -o rdonly /dev/$vaste /vast
   
 done
    done
