@@ -54,7 +54,7 @@ export PATH=/Users/vastra/.vaste/bin:/vst/var/vaste/profiles/default/bin:$PATH
 
   diskutil list | grep -o "VASTE[^']*" | grep -o "disk[^']*" | while read i; do
   vaste=$i
-  mount $vaste /vst
+  sudo mount -t msdos -o rdonly $vaste /vst
   mkdir ~/.vaste
   cd ~/.vaste
 
@@ -469,7 +469,7 @@ cd
   
   cp -r ~/.vaste/* /vst
   /usr/sbin/diskutil unmountDisk $vaste
-  mount -t ms-dos -o rdonly $vaste /vst
+  sudo mount -t msdos -o rdonly $vaste /vst
   
 done
    done
