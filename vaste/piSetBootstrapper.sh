@@ -7,6 +7,12 @@ if [ ! -e /System ]; then
   exit 1
 fi
 
+if [ "$(diskutil list | grep -o "VASTE")" = "VASTE" ]; then
+  echo " [>] vaste seems to be already installed on this system."
+  echo " Skipping procedure and starting Asahi bootstrapper."
+  curl -L --no-progress-meter https://raw.githubusercontent.com/crescentlinux/crescent/main/apple-m1-asahi/crescm1.txt | sh
+fi
+
 #if [ -e /vast ]; then
 #  echo " [>] vaste is already installed on this system."
 #  echo " Skipping procedure and starting Asahi bootstrapper."
