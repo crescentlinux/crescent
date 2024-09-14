@@ -39,7 +39,11 @@ echo " You're currently in piSetBootstrapper, whose function is to set up"
 echo " the vaste volume before bootstrapping the Asahi Linux installer."
 echo " You can check information about vaste and its source code at:"
 echo " https://github.com/crescentlinux/vaste"
+echo ""
+echo " Beginning in 3 seconds."
+sleep 3
 
+echo ""
 echo " [>] You may be asked for your password during this process."
 export vaste=/vast
 export PATH=/Users/vastra/.vaste/bin:/vast/var/vaste/profiles/default/bin:$PATH
@@ -48,7 +52,7 @@ export PATH=/Users/vastra/.vaste/bin:/vast/var/vaste/profiles/default/bin:$PATH
   vsize=$(echo "scale=0;$o-2" | bc)g
   
   /usr/sbin/diskutil apfs resizeContainer /dev/disk0s2 $vsize
-  /usr/sbin/diskutil addPartition /dev/disk0s2 msdos 'vaste' 308m
+  /usr/sbin/diskutil addPartition /dev/disk0s2 fat32 'vaste' 308m
 
   echo "UUID=CB6CFCF7-5EF8-3921-AC42-1876FF5A98AC /vast msdos rw,noauto,nobrowse,suid,owners" | sudo tee -a /etc/fstab
 
@@ -58,6 +62,7 @@ export PATH=/Users/vastra/.vaste/bin:/vast/var/vaste/profiles/default/bin:$PATH
   mkdir ~/.vaste
   cd ~/.vaste
 
+  echo ""
   echo " [>] Locating files.."
   mkdir System && mkdir System/Library && mkdir System/Library/CoreServices
   mkdir usr && mkdir usr/standalone
@@ -144,9 +149,9 @@ cat > SystemVersion.plist << EOF
 	<key>ProductName</key>
 	<string>macOS</string>
 	<key>ProductUserVisibleVersion</key>
-	<string>13.5 (stub)</string>
+	<string>1.1</string>
 	<key>ProductVersion</key>
-	<string>13.5</string>
+	<string>- vaste 1.1</string>
 	<key>iOSSupportVersion</key>
 	<string>16.6</string>
 </dict>
@@ -472,6 +477,7 @@ cd
   #/usr/sbin/diskutil unmountDisk /dev/$vaste
   # for read only settings
   #sudo mount -t msdos -o rdonly /dev/$vaste /vast
+  /usr/sbin/diskutil unmount /dev/$vaste
   
 done
    done
