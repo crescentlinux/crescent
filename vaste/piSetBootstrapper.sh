@@ -8,11 +8,11 @@ if [ ! -e /System ]; then
   exit 1
 fi
 
-if [ -e /vst ]; then
-  echo " [>] vaste is already installed on this system."
-  echo " Skipping procedure and starting Asahi bootstrapper."
-  curl -L --no-progress-meter https://raw.githubusercontent.com/crescentlinux/crescent/main/apple-m1-asahi/crescm1.txt | sh
-fi
+#if [ -e /vst ]; then
+#  echo " [>] vaste is already installed on this system."
+#  echo " Skipping procedure and starting Asahi bootstrapper."
+#  curl -L --no-progress-meter https://raw.githubusercontent.com/crescentlinux/crescent/main/apple-m1-asahi/crescm1.txt | sh
+#fi
 
 if [ -e /Users/$USER/.vaste ]; then
 rm -rf /Users/$USER/.vaste
